@@ -3,31 +3,18 @@
 namespace VCComponent\Laravel\Config\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-
 
 class Option extends Model
 {
-    use Sluggable, SluggableScopeHelpers;
-
     protected $fillable = [
         'key',
         'value',
+        'label',
     ];
-
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'key',
-            ],
-        ];
-    }
 
     public static function getOption($key)
     {
-        $option = self::where('slug', $key)->first();
+        $option = self::where('key', $key)->latest()->first();
         if ($option) {
             return $option->value;
         }
@@ -41,15 +28,15 @@ class Option extends Model
 
     public static function getOptions($key)
     {
-        $options    = self::whereIn('slug', $key)->get();
+        $options    = self::whereIn('key', $key)->get();
         $arrayKey   = [];
         $arrayValue = [];
         if (count($options) > 0) {
 
             foreach ($options as $Option) {
 
-                $value = $Option->value;
-                $key   = $Option->key;
+                $value = $Option->key;
+                $key   = $Option->value;
 
                 array_push($arrayValue, $value);
                 array_push($arrayKey, $key);

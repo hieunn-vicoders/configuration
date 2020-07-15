@@ -14,7 +14,8 @@ class GetStepConfigController extends BaseController
 
         $steps = collect($steps)->map(function ($step) {
             $has_value_inputs = collect($step['inputs'])->map(function ($input) {
-                $input['value'] = Option::getOption($input['label']);
+                $key            = $input['key'];
+                $input['value'] = Option::getOption($key);
                 return $input;
             })->toArray();
             $step['inputs'] = $has_value_inputs;

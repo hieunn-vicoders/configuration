@@ -1,12 +1,12 @@
 <?php
 
-
 use VCComponent\Laravel\Config\Entities\Option;
+use VCComponent\Laravel\Config\Services\Facades\Option as OptionService;
 
 if (!function_exists('getOption')) {
     function getOption($key)
     {
-        return Option::getOption($key);
+        return OptionService::get($key);
     }
 }
 
@@ -26,3 +26,11 @@ if (!function_exists('getOptions')) {
         return Option::getOptions($key);
     }
 }
+
+if (!function_exists('prepareOption')) {
+    function prepareOption($keys)
+    {
+        return OptionService::prepare($keys);
+    }
+}
+

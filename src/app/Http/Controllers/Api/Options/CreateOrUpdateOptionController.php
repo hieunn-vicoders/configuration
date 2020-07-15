@@ -11,15 +11,19 @@ class CreateOrUpdateOptionController extends BaseController
     public function __invoke(Request $request)
     {
         $data = [];
-        collect($request->all())->each(function ($value, $key) use (&$data) {
-            return $data[] = [
-                'key'   => $key,
-                'value' => $value,
-            ];
+
+        collect($request->all())->each(function ($values, $label) use (&$data) {
+            collect($values)->each(function ($value, $key) use (&$data, $label) {
+                return $data[] = [
+                    'label' => $label,
+                    'key'   => $key,
+                    'value' => $value,
+                ];
+            });
         });
 
         foreach ($data as $attribute) {
-            Option::updateOrCreate(['key' => $attribute['key']], $attribute);
+            Option::updateOrCreate(['key' => $attribute['key'], 'label' => $attribute['label']], $attribute);
         }
 
         return response()->json(['success' => true]);
