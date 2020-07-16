@@ -1,15 +1,23 @@
 <?php
 namespace VCComponent\Laravel\Config\Services;
 
+use Illuminate\Support\Facades\Cache;
 use VCComponent\Laravel\Config\Entities\Option as Entity;
 
 class Option
 {
-    protected $data = [];
+    protected $data         = [];
+    protected $cache        = false;
+    protected $cacheMinutes = 60;
 
     public function __construct()
     {
         $this->data = collect($this->data);
+
+        if (isset(config('option.cache')['enabled']) === true) {
+            $this->cache     = true;
+            $this->timeCache = config('option.cache')['minutes'] ? config('option.cache')['minutes'] * 60 : $this->cacheMinutes * 60;
+        }
     }
 
     public function prepare($keys)
@@ -33,16 +41,30 @@ class Option
 
     public function fetch()
     {
+        if ($this->cache === true) {
+            if (Cache::has('optionsFetched') && Cache::get('optionsFetched')->count() !== 0) {
+                return Cache::get('optionsFetched');
+            }
+            return Cache::remember('optionsFetched', $this->timeCache, function () {
+                return $this->fetchExcute();
+            });
+        }
+        return $this->fetchExcute();
+    }
+
+    public function fetchExcute()
+    {
         $un_fetched = $this->data->filter(function ($value, $key) {
             return $value['fetched'] == false;
         });
 
         if ($un_fetched->count()) {
-            $items      = Entity::whereIn('key', $un_fetched->pluck('key'))->get();
+            $items      = Entity::select('key', 'value')->whereIn('key', $un_fetched->pluck('key'))->get();
             $this->data = $this->data->map(function ($d) use ($items) {
                 $found = $items->search(function ($i) use ($d) {
                     return $i->key === $d['key'];
                 });
+
                 if ($found !== false) {
                     return [
                         'key'     => $items->get($found)->key,

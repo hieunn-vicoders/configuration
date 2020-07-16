@@ -17,7 +17,8 @@ class ConfigServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
         $this->publishes([
-            __DIR__ . '/../../config/step.php' => config_path('step.php'),
+            __DIR__ . '/../../config/configuration.php' => config_path('configuration.php'),
+            __DIR__ . '/../../config/option.php'        => config_path('option.php'),
         ]);
 
         $this->app->singleton('option', function ($app) {
