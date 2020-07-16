@@ -14,7 +14,7 @@ class Option
     {
         $this->data = collect($this->data);
 
-        if (isset(config('option.cache')['enabled']) === true) {
+        if (config('option.cache')['enabled'] === true) {
             $this->cache     = true;
             $this->timeCache = config('option.cache')['minutes'] ? config('option.cache')['minutes'] * 60 : $this->cacheMinutes * 60;
         }
