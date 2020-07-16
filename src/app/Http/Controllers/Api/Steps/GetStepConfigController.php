@@ -9,7 +9,7 @@ class GetStepConfigController extends BaseController
 {
     public function __invoke()
     {
-        $steps   = config('step');
+        $steps   = config('configuration');
         $options = Option::all();
 
         $steps = collect($steps)->map(function ($step) {
