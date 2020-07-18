@@ -94,6 +94,10 @@ class Option
 
     public function get($key)
     {
+        if ($this->cache === true && Cache::has('optionsFetched')) {
+            $this->data = Cache::get('optionsFetched');
+        }
+
         $key = strtolower($key);
         $key = trim($key);
 
