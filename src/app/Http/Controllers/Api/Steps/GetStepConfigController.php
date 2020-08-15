@@ -7,15 +7,6 @@ use VCComponent\Laravel\Config\Entities\Option;
 
 class GetStepConfigController extends BaseController
 {
-    public function __construct()
-    {
-        if (!empty(config('option.auth_middleware.admin_view'))) {
-            foreach (config('option.auth_middleware.admin_view') as $middleware) {
-                $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
-            }
-        }
-    }
-
     public function __invoke()
     {
         $steps   = config('configuration');
