@@ -1,4 +1,5 @@
 <?php
+
 namespace VCComponent\Laravel\Config\Services;
 
 use Illuminate\Support\Facades\Cache;

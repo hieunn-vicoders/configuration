@@ -8,6 +8,15 @@ use VCComponent\Laravel\Config\Entities\Option;
 
 class CreateOptionController extends BaseController
 {
+    public function __construct()
+    {
+        if (!empty(config('option.auth_middleware.admin_create'))) {
+            foreach (config('option.auth_middleware.admin_create') as $middleware) {
+                $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
+            }
+        }
+    }
+
     public function __invoke(Request $request)
     {
         $option = Option::create($request->all());

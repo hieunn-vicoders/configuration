@@ -8,6 +8,15 @@ use VCComponent\Laravel\Config\Entities\Option;
 
 class CreateOrUpdateOptionController extends BaseController
 {
+    public function __construct()
+    {
+        if (!empty(config('option.auth_middleware.admin_update'))) {
+            foreach (config('option.auth_middleware.admin_update') as $middleware) {
+                $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
+            }
+        }
+    }
+
     public function __invoke(Request $request)
     {
         $data = [];
