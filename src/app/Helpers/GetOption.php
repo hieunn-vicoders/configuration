@@ -76,94 +76,94 @@ if (!function_exists('get_banner')) {
     }
 }
 
-if (!function_exists('get_infor_name')) {
-    function get_infor_name()
+if (!function_exists('get_info_name')) {
+    function get_info_name()
     {
-        return OptionService::get('infor-name');
+        return OptionService::get('info-name');
     }
 }
 
-if (!function_exists('get_infor_email')) {
-    function get_infor_email()
+if (!function_exists('get_info_email')) {
+    function get_info_email()
     {
-        return OptionService::get('infor-email');
+        return OptionService::get('info-email');
     }
 }
 
-if (!function_exists('get_infor_hotline')) {
-    function get_infor_hotline()
+if (!function_exists('get_info_hotline')) {
+    function get_info_hotline()
     {
-        return OptionService::get('infor-hotline');
+        return OptionService::get('info-hotline');
     }
 }
 
-if (!function_exists('get_infor_fax')) {
-    function get_infor_fax()
+if (!function_exists('get_info_fax')) {
+    function get_info_fax()
     {
-        return OptionService::get('infor-fax');
+        return OptionService::get('info-fax');
     }
 }
 
-if (!function_exists('get_infor_support_online')) {
-    function get_infor_support_online()
+if (!function_exists('get_info_support_online')) {
+    function get_info_support_online()
     {
-        return OptionService::get('infor-support-online');
+        return OptionService::get('info-support-online');
     }
 }
 
-if (!function_exists('get_infor_address')) {
-    function get_infor_address()
+if (!function_exists('get_info_address')) {
+    function get_info_address()
     {
-        return OptionService::get('infor-address');
+        return OptionService::get('info-address');
     }
 }
 
-if (!function_exists('get_infor_facebook')) {
-    function get_infor_facebook()
+if (!function_exists('get_info_facebook')) {
+    function get_info_facebook()
     {
-        return OptionService::get('infor-facebook');
+        return OptionService::get('info-facebook');
     }
 }
 
-if (!function_exists('get_infor_instagram')) {
-    function get_infor_instagram()
+if (!function_exists('get_info_instagram')) {
+    function get_info_instagram()
     {
-        return OptionService::get('infor-instagram');
+        return OptionService::get('info-instagram');
     }
 }
 
-if (!function_exists('get_infor_twitter')) {
-    function get_infor_twitter()
+if (!function_exists('get_info_twitter')) {
+    function get_info_twitter()
     {
-        return OptionService::get('infor-twitter');
+        return OptionService::get('info-twitter');
     }
 }
 
-if (!function_exists('get_infor_zalo')) {
-    function get_infor_zalo()
+if (!function_exists('get_info_zalo')) {
+    function get_info_zalo()
     {
-        return OptionService::get('infor-zalo');
+        return OptionService::get('info-zalo');
     }
 }
 
-if (!function_exists('get_infor_youtube')) {
-    function get_infor_youtube()
+if (!function_exists('get_info_youtube')) {
+    function get_info_youtube()
     {
-        return OptionService::get('infor-youtube');
+        return OptionService::get('info-youtube');
     }
 }
 
-if (!function_exists('get_infor_fanpage')) {
-    function get_infor_fanpage()
+if (!function_exists('get_info_fanpage')) {
+    function get_info_fanpage()
     {
-        return OptionService::get('infor-fanpage');
+        return OptionService::get('info-fanpage');
     }
 }
 
-if (!function_exists('get_infor_map')) {
-    function get_infor_map()
+if (!function_exists('get_info_map')) {
+    function get_info_map()
     {
-        return OptionService::get('infor-map');
+        return OptionService::get('info-map');
     }
 }
 
