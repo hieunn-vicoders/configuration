@@ -6,7 +6,7 @@ return [
         'inputs' => [
             [
                 'label' => 'Header Logo',
-                'key'   => 'Logo-website',
+                'key'   => 'logo-website',
                 'type'  => 'image',
             ],
             [
@@ -34,6 +34,11 @@ return [
                 'label' => 'Tên công ty/cửa hàng',
                 'key'   => 'info-name',
                 'type'  => 'text',
+            ],
+            [
+                'label' => 'Mô tả công ty/cửa hàng',
+                'key'   => 'info-description',
+                'type'  => 'textarea',
             ],
             [
                 'label' => 'Địa chỉ công ty/cửa hàng',
@@ -169,13 +174,63 @@ return [
             ],
             [
                 'label' => 'Title dịch vụ 3',
-                'key'   => 'title-service-2',
+                'key'   => 'title-service-3',
                 'type'  => 'text',
             ],
             [
                 'label' => 'Description dịch vụ 3',
-                'key'   => 'description-service-2',
+                'key'   => 'description-service-3',
                 'type'  => 'text',
+            ],
+            [
+                'label' => 'Logo đối tác 1',
+                'key'   => 'logo-partner-1',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Logo đối tác 2',
+                'key'   => 'logo-partner-2',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Logo đối tác 3',
+                'key'   => 'logo-partner-3',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Logo đối tác 4',
+                'key'   => 'logo-partner-4',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Logo đối tác 5',
+                'key'   => 'logo-partner-5',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Logo đối tác 6',
+                'key'   => 'logo-partner-6',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Banner 1',
+                'key'   => 'banner-1',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Banner 2',
+                'key'   => 'banner-2',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Banner 3',
+                'key'   => 'banner-3',
+                'type'  => 'image',
+            ],
+            [
+                'label' => 'Banner 4',
+                'key'   => 'banner-4',
+                'type'  => 'image',
             ],
         ],
     ],

@@ -62,14 +62,14 @@ if (!function_exists('get_slide')) {
 }
 
 if (!function_exists('get_logo_partner')) {
-    function get_logo_partner($param, $type, $size, $transparent)
+    function get_logo_partner($param, $type = null, $size = null, $transparent = null)
     {
         $key = get_args($param, $type, $size, $transparent);
         return OptionService::get('logo-partner' . $key);
     }
 }
 if (!function_exists('get_banner')) {
-    function get_banner($param, $type, $size, $transparent)
+    function get_banner($param, $type = null, $size = null, $transparent = null)
     {
         $key = get_args($param, $type, $size, $transparent);
         return OptionService::get('banner' . $key);
@@ -80,6 +80,13 @@ if (!function_exists('get_info_name')) {
     function get_info_name()
     {
         return OptionService::get('info-name');
+    }
+}
+
+if (!function_exists('get_info_description')) {
+    function get_info_description()
+    {
+        return OptionService::get('info-description');
     }
 }
 
@@ -168,7 +175,7 @@ if (!function_exists('get_info_map')) {
 }
 
 if (!function_exists('get_icon_service')) {
-    function get_icon_service($param, $type, $size, $transparent)
+    function get_icon_service($param, $type = null, $size = null, $transparent = null)
     {
         $key = get_args($param, $type, $size, $transparent);
         return OptionService::get('icon-service' . $key);
@@ -178,7 +185,7 @@ if (!function_exists('get_icon_service')) {
 if (!function_exists('get_title_service')) {
     function get_title_service($param)
     {
-        return OptionService::get('title-service' . $param);
+        return OptionService::get('title-service-' . $param);
     }
 }
 
@@ -211,7 +218,7 @@ if (!function_exists('get_favicon')) {
 }
 
 if (!function_exists('get_sologan')) {
-    function get_slogogan()
+    function get_sologan()
     {
         return OptionService::get('sologan');
     }
