@@ -60,7 +60,7 @@ class Option
         });
 
         if ($un_fetched->count()) {
-            $items      = Entity::select('key', 'value')->whereIn('key', $un_fetched->pluck('key'))->get();
+            $items      = Entity::select('id', 'key', 'value')->with('languages')->whereIn('key', $un_fetched->pluck('key'))->get();
             $this->data = $this->data->map(function ($d) use ($items) {
                 $found = $items->search(function ($i) use ($d) {
                     return $i->key === $d['key'];

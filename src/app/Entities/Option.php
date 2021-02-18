@@ -3,9 +3,12 @@
 namespace VCComponent\Laravel\Config\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use VCComponent\Laravel\Language\Traits\HasLanguageOptionTrait;
 
 class Option extends Model
 {
+    use HasLanguageOptionTrait;
+
     protected $fillable = [
         'key',
         'value',
