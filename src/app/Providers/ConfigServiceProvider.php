@@ -22,6 +22,10 @@ class ConfigServiceProvider extends ServiceProvider
         ]);
 
         $this->app->singleton('option', function ($app) {
+            if (config('option.model.option') === 'App\Entities\Option') {
+                $option = config('option.model.option');
+                return new $option;
+            }
             return new Option();
         });
     }
