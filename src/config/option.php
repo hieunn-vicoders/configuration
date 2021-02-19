@@ -4,7 +4,7 @@ return [
         'enabled' => true,
         'minutes' => 5,
     ],
-    'models'          => [
+    'model'          => [
         'option' => VCComponent\Laravel\Config\Entities\Option::class,
     ],
     'auth_middleware' => [

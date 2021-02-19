@@ -11,8 +11,8 @@ class GetStepConfigController extends BaseController
     {
         $steps   = config('configuration');
         $options = Option::all();
-        $steps = collect($steps)->map(function ($step) use ($options) {
-            $has_value_inputs = collect($step['inputs'])->map(function ($input) {
+        $steps   = collect($steps)->map(function ($step) use ($options) {
+            $has_value_inputs   = collect($step['inputs'])->map(function ($input) {
                 $key            = $input['key'];
                 $data_option    = Option::where('key', $key)->first();
                 if (isset($data_option->id)) {

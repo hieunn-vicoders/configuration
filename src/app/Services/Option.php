@@ -19,6 +19,7 @@ class Option extends model
             $this->cache     = true;
             $this->timeCache = config('option.cache')['minutes'] ? config('option.cache')['minutes'] * 60 : $this->cacheMinutes * 60;
         }
+
         if (config('option.model')) {
             $this->entity = config('option.model.option');
         } else {
