@@ -3,14 +3,14 @@
 namespace VCComponent\Laravel\Config\Services;
 
 use Illuminate\Support\Facades\Cache;
-use VCComponent\Laravel\Config\Entities\Option as Entity;
+use Illuminate\Database\Eloquent\Model;
 
-class Option
+class Option extends model
 {
     protected $data         = [];
     protected $cache        = false;
     protected $cacheMinutes = 60;
-
+    protected $entity;
     public function __construct()
     {
         $this->data = collect($this->data);
@@ -18,6 +18,12 @@ class Option
         if (config('option.cache')['enabled'] === true) {
             $this->cache     = true;
             $this->timeCache = config('option.cache')['minutes'] ? config('option.cache')['minutes'] * 60 : $this->cacheMinutes * 60;
+        }
+
+        if (config('option.model')) {
+            $this->entity = config('option.model.option');
+        } else {
+            $this->entity = Option::class;
         }
     }
 
@@ -58,14 +64,16 @@ class Option
         $un_fetched = $this->data->filter(function ($value, $key) {
             return $value['fetched'] == false;
         });
-
         if ($un_fetched->count()) {
-            $items      = Entity::select('key', 'value')->whereIn('key', $un_fetched->pluck('key'))->get();
+            if ($this->entity === 'App\Entities\Option') {
+                $items      = $this->entity::select('id', 'key', 'value')->with('languages')->whereIn('key', $un_fetched->pluck('key'))->get();
+            } else {
+                $items      = $this->entity::select('key', 'value')->whereIn('key', $un_fetched->pluck('key'))->get();
+            }
             $this->data = $this->data->map(function ($d) use ($items) {
                 $found = $items->search(function ($i) use ($d) {
                     return $i->key === $d['key'];
                 });
-
                 if ($found !== false) {
                     return [
                         'key'     => $items->get($found)->key,
@@ -76,7 +84,6 @@ class Option
                     return $d;
                 }
             });
-
             $this->data = $this->data->map(function ($item) {
                 if ($item['fetched'] === false) {
                     return [
@@ -114,7 +121,6 @@ class Option
             $result = $this->data->get($item);
 
             return $result['value'];
-
         } else {
             $item = $this->data->get($found);
             if ($item['fetched'] === true) {
