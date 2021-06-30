@@ -12,15 +12,15 @@ class SaveStepConfigTest extends TestCase
     /**
      * @test
      */
-    public function can_save_step_config()
+    public function should_save_step_config()
     {
         $data = [
-            'key1' => 'value1',
-            'key2' => 'value2',
-            'key3' => 'value3',
+            'Label 1' => ['key1' => 'value1'],
+            'Label 2' => ['key2' => 'value2'],
+            'Label 3' => ['key3' => 'value3'],
         ];
 
-        $response = $this->json('POST', route('steps.save.config'), $data);
+        $this->json('POST', route('steps.save.config'), $data);
 
         $check = [
             [

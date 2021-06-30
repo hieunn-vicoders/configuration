@@ -13,28 +13,28 @@ class CreateOrUpdateOptionTest extends TestCase
     /**
      * @test
      */
-    public function can_create_option()
+    public function should_create_option()
     {
         $data = [
-            'key1' => 'value1',
-            'key2' => 'value2',
-            'key3' => 'value3',
+            'Label 1' => ['key1' => 'value1'],
+            'Label 2' => ['key2' => 'value2'],
+            'Label 3' => ['key3' => 'value3'],
         ];
 
         $response = $this->json('POST', route('options.create-or-update'), $data);
-
+        $response->assertStatus(200);
         $check = [
             [
                 'key'   => 'key1',
-                'value' => 'value1',
+                'value' => 'value1'
             ],
             [
                 'key'   => 'key2',
-                'value' => 'value2',
+                'value' => 'value2'
             ],
             [
-                'key'   => 'key2',
-                'value' => 'value2',
+                'key'   => 'key3',
+                'value' => 'value3'
             ],
         ];
         foreach ($check as $item) {
@@ -45,23 +45,23 @@ class CreateOrUpdateOptionTest extends TestCase
     /**
      * @test
      */
-    public function can_update_existed_option()
+    public function should_update_existed_option()
     {
-        factory(Option::class)->create(['key' => 'key1', 'value' => 'value1']);
+
+        factory(Option::class)->create(['label' => 'Lable 1','key' => 'key1', 'value' => 'value1']);
 
         $this->assertDatabaseHas('options', ['key' => 'key1', 'value' => 'value1']);
-
         $data = [
-            'key1' => 'value1 update',
+            'Lable 1' => ['key1' => 'value update'],
         ];
 
-        $response = $this->json('POST', route('options.create-or-update'), $data);
+        $this->json('POST', route('options.create-or-update'), $data);
 
         $check = [
             'key'   => 'key1',
-            'value' => 'value1 update',
+            'value' => 'value update',
         ];
         $this->assertDatabaseHas('options', $check);
-        $this->assertSame('value1 update', Option::getOption('key1'));
+        $this->assertSame('value update', Option::getOption('key1'));
     }
 }

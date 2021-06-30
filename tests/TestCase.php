@@ -44,38 +44,28 @@ class TestCase extends OrchestraTestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-        $app['config']->set('step', [
+        $app['config']->set('configuration', [
             [
-                'label'  => 'Step1',
+                'label'  => 'step1',
                 'inputs' => [
                     [
-                        'label' => 'input1',
+                        'label' => 'input 1',
+                        'key' => 'input1',
                         'type'  => 'text',
                     ],
-                ],
-            ],
-            [
-                'label'  => 'Step2',
-                'inputs' => [
                     [
-                        'label' => 'input2',
+                        'label' => 'input 2',
+                        'key' => 'input2',
                         'type'  => 'textarea',
                     ],
                     [
-                        'label' => 'input2.1',
-                        'type'  => 'text',
-                    ],
-                ],
-            ],
-            [
-                'label'  => 'Step3',
-                'inputs' => [
-                    [
-                        'label' => 'input3',
+                        'label' => 'input 3',
+                        'key' => 'input3',
                         'type'  => 'image',
                     ],
                 ],
             ],
         ]);
+
     }
 }
