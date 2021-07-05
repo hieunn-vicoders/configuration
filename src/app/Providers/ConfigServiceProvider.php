@@ -19,6 +19,8 @@ class ConfigServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../config/configuration.php' => config_path('configuration.php'),
             __DIR__ . '/../../config/option.php'        => config_path('option.php'),
+            __DIR__ . '/../../config/admin-menu.php'        => config_path('admin-menu.php'),
+            __DIR__ . '/../../database/seeds/AdminMenuConfigTableSeeder.php' => base_path('/database/seeds/AdminMenuConfigTableSeeder.php'),
         ]);
 
         $this->app->singleton('option', function ($app) {
