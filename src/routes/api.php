@@ -15,3 +15,10 @@ Route::name('options.')
         Route::post('', 'CreateOptionController')->name('create');
         Route::post('/create-or-update', 'CreateOrUpdateOptionController')->name('create-or-update');
     });
+
+Route::name('steps.')
+    ->prefix('api/settings')
+    ->namespace('VCComponent\Laravel\Config\Http\Controllers\Api')
+    ->group(function () {
+        Route::get('', 'Settings\GetSettingConfigController')->name('setting.config');
+    });
