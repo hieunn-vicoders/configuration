@@ -11,7 +11,7 @@ class GetSettingConfigController extends BaseController
 {
     public function __construct()
     {
-        if (!empty(config('admin-menu.auth_middleware.admin'))) {
+        if (!empty(config('settings.auth_middleware.admin'))) {
             foreach (config('admin-menu.auth_middleware') as $middleware) {
                 $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
             }
@@ -21,7 +21,7 @@ class GetSettingConfigController extends BaseController
     public function __invoke()
     {
         $settings = [];
-        $settings['admin_menu'] = AdminMenuConfiguration::getAdminMenuConfiguration();
+        $settings['admin_menu'] = config('admin-menu');
         $steps   = config('configuration');
         $options = Option::all();
         $settings['quick_settings']   = collect($steps)->map(function ($step) use ($options) {
