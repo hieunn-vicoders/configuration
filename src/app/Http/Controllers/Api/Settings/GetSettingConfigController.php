@@ -12,7 +12,7 @@ class GetSettingConfigController extends BaseController
     public function __construct()
     {
         if (!empty(config('settings.auth_middleware.admin'))) {
-            foreach (config('admin-menu.auth_middleware') as $middleware) {
+            foreach (config('settings.auth_middleware.admin') as $middleware) {
                 $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
             }
         }
