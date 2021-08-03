@@ -37,6 +37,8 @@ class GetSettingConfigController extends BaseController
             $step['inputs'] = $has_value_inputs;
             return $step;
         })->toArray();
+        $settings['dashboard'] = config('dashboard');
+
         return response()->json($settings);
     }
 }
