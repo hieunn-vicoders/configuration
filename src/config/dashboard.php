@@ -40,17 +40,17 @@ return [
                     "label" => "Đặt hàng",
                     "type" => "shortcut",
                     "order" => 1,
-                    "url" => "#",
+                    "url" => "/admin/order",
                     "color" => "#f53fc5",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/product.svg"
                 ],
                 [
                     "label" => "Tạo mới sản phẩm",
                     "type" => "shortcut",
                     "order" => 2,
-                    "url" => "#",
+                    "url" => "/admin/products/create",
                     "color" => "#09f",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/add product.svg"
                 ],
                 [
                     "label" => "Kho hàng",
@@ -58,15 +58,15 @@ return [
                     "order" => 3,
                     "url" => "#",
                     "color" => "#eca03c",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/warehouse.svg"
                 ],
                 [
                     "label" => "Tạo mới bài viết",
                     "type" => "shortcut",
                     "order" => 4,
-                    "url" => "#",
+                    "url" => "/admin/posts/create",
                     "color" => "#09f",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/addpage.svg"
                 ]
             ]
         ],
@@ -80,23 +80,23 @@ return [
                     "order" => 1,
                     "url" => "#",
                     "color" => "#04d587",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/marketing.svg"
                 ],
                 [
                     "label" => "Thống kê",
                     "type" => "shortcut",
                     "order" => 2,
-                    "url" => "#",
+                    "url" => "/admin/statistical",
                     "color" => "#e2c401",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/statistical.svg"
                 ],
                 [
                     "label" => "Báo cáo",
                     "type" => "shortcut",
                     "order" => 3,
-                    "url" => "#",
+                    "url" => "/admin/statistical/report",
                     "color" => "#ff5d7f",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/report.svg"
                 ],
                 [
                     "label" => "Thanh toán",
@@ -104,7 +104,7 @@ return [
                     "order" => 4,
                     "url" => "#",
                     "color" => "#2b4def",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/pay.svg"
                 ]
             ]
         ],
@@ -118,15 +118,15 @@ return [
                     "order" => 1,
                     "url" => "#",
                     "color" => "#00b894",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/banner.svg"
                 ],
                 [
                     "label" => "Cấu hình nhanh",
                     "type" => "shortcut",
                     "order" => 2,
-                    "url" => "#",
+                    "url" => "/admin/system/configuration",
                     "color" => "#00b894",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/layer.svg"
                 ],
                 [
                     "label" => "Người dùng",
@@ -134,7 +134,7 @@ return [
                     "order" => 3,
                     "url" => "#",
                     "color" => "#00b894",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/customer.svg"
                 ],
                 [
                     "label" => "Menu danh mục",
@@ -142,7 +142,7 @@ return [
                     "order" => 4,
                     "url" => "#",
                     "color" => "#00b894",
-                    "icon" => ""
+                    "icon" => "/assets/icons/icon-white/menucategory.svg"
                 ]
             ]
         ]
