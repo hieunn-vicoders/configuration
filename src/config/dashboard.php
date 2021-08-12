@@ -34,7 +34,7 @@ return [
         ],
         [
             "label" => "Sản phẩm",
-            "order" => 1,
+            "order" => 2,
             "widgets" => [
                 [
                     "label" => "Đặt hàng",
@@ -72,7 +72,7 @@ return [
         ],
         [
             "label" => "Chiến dịch",
-            "order" => 2,
+            "order" => 3,
             "widgets" => [
                 [
                     "label" => "Tạo mới chiến dịch",
@@ -110,7 +110,7 @@ return [
         ],
         [
             "label" => "Thiết lập",
-            "order" => 3,
+            "order" => 4,
             "widgets" => [
                 [
                     "label" => "Banner",

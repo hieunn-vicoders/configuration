@@ -22,3 +22,9 @@ Route::name('steps.')
     ->group(function () {
         Route::get('', 'Settings\GetSettingConfigController')->name('setting.config');
     });
+Route::name('steps.')
+    ->prefix('api/app-settings')
+    ->namespace('VCComponent\Laravel\Config\Http\Controllers\Api')
+    ->group(function () {
+        Route::get('', 'Settings\GetAppSettingConfigController')->name('setting.config');
+    });
