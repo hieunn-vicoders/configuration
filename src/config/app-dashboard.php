@@ -48,7 +48,7 @@ return [
                     "label" => "Posts",
                     "type" => "shortcut",
                     "order" => 2,
-                    "url" => "NewsScreen",
+                    "url" => "PostScreen",
                     "color" => "#00B8D4",
                     "icon" => "receipt"
                 ]
