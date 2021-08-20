@@ -3,10 +3,10 @@
 return [
     'auth_middleware' => [
         'admin'   => [
-            // [
-            //     'middleware' => '',
-            //     'except'     => [],
-            // ],
+            [
+                'middleware' => '',
+                'except'     => [],
+            ],
         ],
     ],
 ];

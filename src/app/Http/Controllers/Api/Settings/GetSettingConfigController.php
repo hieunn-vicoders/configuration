@@ -16,6 +16,9 @@ class GetSettingConfigController extends BaseController
                 $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
             }
         }
+        else{
+            throw new Exception("Admin middleware configuration is required");
+        }
     }
 
     public function __invoke()

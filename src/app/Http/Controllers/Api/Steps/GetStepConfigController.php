@@ -7,6 +7,17 @@ use VCComponent\Laravel\Config\Entities\Option;
 
 class GetStepConfigController extends BaseController
 {
+    public function __construct()
+    {
+        if (!empty(config('settings.auth_middleware.admin'))) {
+            foreach (config('settings.auth_middleware.admin') as $middleware) {
+                $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
+            }
+        }
+        else{
+            throw new Exception("Admin middleware configuration is required");
+        }
+    }
     public function __invoke()
     {
         $steps   = config('configuration');
