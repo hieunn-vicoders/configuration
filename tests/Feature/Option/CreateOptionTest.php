@@ -14,9 +14,10 @@ class CreateOptionTest extends TestCase
      */
     public function should_create_option()
     {
+        $this->withoutMiddleware();
         $data = [
             'label' => 'Key 1',
-            'key'   => 'key1',
+            'key' => 'key1',
             'value' => 'value1',
         ];
         $response = $this->json('POST', route('options.create'), $data);
@@ -24,4 +25,5 @@ class CreateOptionTest extends TestCase
         $this->assertDatabaseHas('options', $data);
         $response->assertJson(['data' => $data]);
     }
+
 }

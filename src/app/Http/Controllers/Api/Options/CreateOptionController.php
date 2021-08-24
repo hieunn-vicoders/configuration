@@ -14,8 +14,7 @@ class CreateOptionController extends BaseController
             foreach (config('option.auth_middleware.admin_create') as $middleware) {
                 $this->middleware($middleware['middleware'], ['except' => $middleware['except']]);
             }
-        }
-        else{
+        } else {
             throw new Exception("Admin middleware configuration is required");
         }
     }

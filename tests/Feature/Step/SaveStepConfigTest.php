@@ -14,6 +14,8 @@ class SaveStepConfigTest extends TestCase
      */
     public function should_save_step_config()
     {
+        $this->withoutMiddleware();
+
         $data = [
             'Label 1' => ['key1' => 'value1'],
             'Label 2' => ['key2' => 'value2'],
@@ -24,15 +26,15 @@ class SaveStepConfigTest extends TestCase
 
         $check = [
             [
-                'key'   => 'key1',
+                'key' => 'key1',
                 'value' => 'value1',
             ],
             [
-                'key'   => 'key2',
+                'key' => 'key2',
                 'value' => 'value2',
             ],
             [
-                'key'   => 'key2',
+                'key' => 'key2',
                 'value' => 'value2',
             ],
         ];

@@ -15,10 +15,8 @@ class GetStepConfigTest extends TestCase
      */
     public function should_get_step_config()
     {
-
+        $this->withoutMiddleware();
         $config = $this->app['config']->get('configuration');
-
-
         $response = $this->get(route('steps.get.config'));
         $response->assertJson($config);
 
@@ -29,15 +27,16 @@ class GetStepConfigTest extends TestCase
      */
     public function should_get_step_config_and_option_values()
     {
+        $this->withoutMiddleware();
         $data = [
             [
                 'label' => 'input 1',
-                'key'   => 'input1',
+                'key' => 'input1',
                 'value' => 'input 1 value',
             ],
             [
                 'label' => 'Label 2',
-                'key'   => 'input2',
+                'key' => 'input2',
                 'value' => 'input 2.1 value',
             ],
         ];
