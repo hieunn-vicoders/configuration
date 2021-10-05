@@ -15,6 +15,7 @@ class CreateOrUpdateOptionTest extends TestCase
      */
     public function should_create_option()
     {
+        $this->withoutMiddleware();
         $data = [
             'Label 1' => ['key1' => 'value1'],
             'Label 2' => ['key2' => 'value2'],
@@ -25,16 +26,16 @@ class CreateOrUpdateOptionTest extends TestCase
         $response->assertStatus(200);
         $check = [
             [
-                'key'   => 'key1',
-                'value' => 'value1'
+                'key' => 'key1',
+                'value' => 'value1',
             ],
             [
-                'key'   => 'key2',
-                'value' => 'value2'
+                'key' => 'key2',
+                'value' => 'value2',
             ],
             [
-                'key'   => 'key3',
-                'value' => 'value3'
+                'key' => 'key3',
+                'value' => 'value3',
             ],
         ];
         foreach ($check as $item) {
@@ -47,8 +48,9 @@ class CreateOrUpdateOptionTest extends TestCase
      */
     public function should_update_existed_option()
     {
+        $this->withoutMiddleware();
 
-        factory(Option::class)->create(['label' => 'Lable 1','key' => 'key1', 'value' => 'value1']);
+        factory(Option::class)->create(['label' => 'Lable 1', 'key' => 'key1', 'value' => 'value1']);
 
         $this->assertDatabaseHas('options', ['key' => 'key1', 'value' => 'value1']);
         $data = [
@@ -58,7 +60,7 @@ class CreateOrUpdateOptionTest extends TestCase
         $this->json('POST', route('options.create-or-update'), $data);
 
         $check = [
-            'key'   => 'key1',
+            'key' => 'key1',
             'value' => 'value update',
         ];
         $this->assertDatabaseHas('options', $check);

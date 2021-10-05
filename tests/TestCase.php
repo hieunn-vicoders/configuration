@@ -16,7 +16,9 @@ class TestCase extends OrchestraTestCase
      */
     protected function getPackageProviders($app)
     {
-        return [ConfigServiceProvider::class];
+        return [
+            ConfigServiceProvider::class,
+        ];
     }
 
     /**
@@ -40,32 +42,55 @@ class TestCase extends OrchestraTestCase
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
         $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
         $app['config']->set('configuration', [
             [
-                'label'  => 'step1',
+                'label' => 'step1',
                 'inputs' => [
                     [
                         'label' => 'input 1',
                         'key' => 'input1',
-                        'type'  => 'text',
+                        'type' => 'text',
                     ],
                     [
                         'label' => 'input 2',
                         'key' => 'input2',
-                        'type'  => 'textarea',
+                        'type' => 'textarea',
                     ],
                     [
                         'label' => 'input 3',
                         'key' => 'input3',
-                        'type'  => 'image',
+                        'type' => 'image',
                     ],
+                ],
+            ],
+        ]);
+        $app['config']->set('option.auth_middleware', [
+            'admin_create' => [
+                [
+                    'middleware' => '',
+                    'except' => [],
+                ],
+            ],
+            'admin_update' => [
+                [
+                    'middleware' => '',
+                    'except' => [],
+                ],
+            ],
+        ]);
+        $app['config']->set('settings.auth_middleware', [
+            'admin' => [
+                [
+                    'middleware' => '',
+                    'except' => [],
                 ],
             ],
         ]);
 
     }
+
 }
