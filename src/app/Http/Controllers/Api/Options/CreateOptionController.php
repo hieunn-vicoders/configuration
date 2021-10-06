@@ -2,6 +2,7 @@
 
 namespace VCComponent\Laravel\Config\Http\Controllers\Api\Options;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use VCComponent\Laravel\Config\Entities\Option;
