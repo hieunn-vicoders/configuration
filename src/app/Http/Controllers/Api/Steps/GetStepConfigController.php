@@ -2,6 +2,7 @@
 
 namespace VCComponent\Laravel\Config\Http\Controllers\Api\Steps;
 
+use Exception;
 use Illuminate\Routing\Controller as BaseController;
 use VCComponent\Laravel\Config\Entities\Option;
 

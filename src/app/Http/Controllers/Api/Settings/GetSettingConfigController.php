@@ -3,6 +3,7 @@
 namespace VCComponent\Laravel\Config\Http\Controllers\Api\Settings;
 
 use App\Entities\Post;
+use Exception;
 use Illuminate\Routing\Controller as BaseController;
 use VCComponent\Laravel\Config\Entities\AdminMenuConfiguration;
 use VCComponent\Laravel\Config\Entities\Option;
