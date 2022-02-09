@@ -23,15 +23,40 @@ class GetSettingConfigController extends BaseController
     public function __invoke(Request $request)
     {
         $settings = [];
-        if ($request->has('language')) {
-            $settings['dashboard'] = config('dashboard.' . $request['language']);
-            $settings['admin_setting'] = config('admin-setting.' . $request['language']);
-            $settings['admin_menu'] = config('admin-menu.' . $request['language']);
-        } else {
-            $settings['dashboard'] = config('dashboard.vi');
-            $settings['admin_setting'] = config('admin-setting.vi');
-            $settings['admin_menu'] = config('admin-menu.vi');
-        }
+        $settings['admin_menu'] = collect(config('admin-menu'))->map(function ($item) {
+            $item['title'] = __($item['title']);
+            if (!empty($item['children'])) {
+                $children = collect($item['children'])->map(function ($children) {
+                    $children['title'] = __($children['title']);
+                    return $children;
+                });
+                $item['children'] = $children;
+            }
+            return $item;
+        });
+        $settings['dashboard']['sections'] = collect(config('dashboard.sections'))->map(function ($item) {
+            $item['label'] = __($item['label']);
+            if (!empty($item['widgets'])) {
+                $widget = collect($item['widgets'])->map(function ($widget) {
+                    $widget['label'] = __($widget['label']);
+                    return $widget;
+                });
+                $item['widgets'] = $widget;
+            }
+            return $item;
+        });
+        $settings['admin_setting']['sections'] = collect(config('admin-setting.sections'))->map(function ($item) {
+            $item['label'] = __($item['label']);
+            if (!empty($item['widgets'])) {
+                $widget = collect($item['widgets'])->map(function ($widget) {
+                    $widget['label'] = __($widget['label']);
+                    $widget['description'] = __($widget['description']);
+                    return $widget;
+                });
+                $item['widgets'] = $widget;
+            }
+            return $item;
+        });
         $steps = config('configuration');
         $options = Option::all();
         $settings['quick_settings'] = collect($steps)->map(function ($step) use ($options) {
@@ -47,9 +72,8 @@ class GetSettingConfigController extends BaseController
             $step['inputs'] = $has_value_inputs;
             return $step;
         })->toArray();
-
-        $settings['admin_multi_language'] = config('admin-multi-language.enable');
-
+        $settings['admin_multi_language'] = config('multi_language.enable');
         return response()->json($settings);
     }
+
 }
