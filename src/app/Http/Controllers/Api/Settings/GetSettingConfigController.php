@@ -44,6 +44,7 @@ class GetSettingConfigController extends BaseController
         $settings['dashboard'] = config('dashboard');
         $settings['admin_setting'] = config('admin-setting');
         $settings['admin_multi_language'] = config('admin-multi-language.enable');
+        $settings = array_merge($settings, config('admin-section'));
 
         return response()->json($settings);
     }

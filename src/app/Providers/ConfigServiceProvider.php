@@ -25,6 +25,7 @@ class ConfigServiceProvider extends ServiceProvider
             __DIR__ . '/../../config/app-dashboard.php' => config_path('app-dashboard.php'),
             __DIR__ . '/../../config/admin-multi-language.php'      => config_path('admin-multi-language.php'),
             __DIR__ . '/../../config/admin-setting.php' => config_path('admin-setting.php'),
+            __DIR__ . '/../../config/admin-section.php' => config_path('admin-section.php'),
         ]);
 
         $this->app->singleton('option', function ($app) {
