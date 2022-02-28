@@ -45,7 +45,6 @@ class Option extends model
         }
         return '';
     }
-
     public function fetch()
     {
         if ($this->cache === true) {
