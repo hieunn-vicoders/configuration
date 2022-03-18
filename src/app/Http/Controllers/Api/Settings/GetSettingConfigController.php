@@ -74,6 +74,14 @@ class GetSettingConfigController extends BaseController
         })->toArray();
         $settings['admin_multi_language'] = config('multi_language.enable');
         $settings = array_merge($settings, config('admin-section'));
+
+        $setting['analytic']['chart'] = collect(config('admin-analytic.analytic.chart'))->map(function ($item) {
+            $item['name'] = __($item['name']);
+            $item['description'] = __($item['description']);
+            $item['unit'] = __($item['unit']);
+            $item['unit_description'] = __($item['unit_description']);
+            return $item;
+        });
         return response()->json($settings);
     }
 
